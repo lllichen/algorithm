@@ -15,6 +15,10 @@ public class MyArrayList<T> implements Iterable<T>{
 
     private  T [] theItems;
 
+    public int capacity(){
+        return theItems.length;
+    }
+
     public MyArrayList() {
         doClear();
     }
@@ -90,7 +94,7 @@ public class MyArrayList<T> implements Iterable<T>{
 
 
     public void ensureCapacity(int newCapacity){
-        if (newCapacity < theSize)
+        if (newCapacity < size())
             return;
         T [] old = theItems;
         theItems = (T[])  new Object[newCapacity];
