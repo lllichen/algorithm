@@ -140,9 +140,11 @@ public class MyLinkedList<T> implements Iterable<T> {
 
         @Override
         public T next() {
+            System.out.println("next 1");
             if(expectedModCount != modCount){
                 throw new ConcurrentModificationException();
             }
+            System.out.println("has Next:"+hasNext());
             if (!hasNext()){
                 throw new NoSuchElementException(  );
             }
@@ -160,7 +162,7 @@ public class MyLinkedList<T> implements Iterable<T> {
             if(!okToRemove){
                 throw new IllegalStateException(  );
             }
-            
+
             MyLinkedList.this.remove( current.prev );
             expectedModCount++;
             okToRemove = false;
