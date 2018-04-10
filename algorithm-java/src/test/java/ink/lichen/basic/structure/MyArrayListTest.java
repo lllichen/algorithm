@@ -65,6 +65,21 @@ public class MyArrayListTest {
         println( list );
     }
 
+    @Test
+    public void testIterator(){
+        MyArrayList a1 = new MyArrayList();
+       a1.echoHash();
+        System.out.println(a1.iterator().hashCode());
+       a1.echoHash();
+        System.out.println(a1.iterator().hashCode());
+       a1.echoHash();
+        System.out.println(a1.iterator().hashCode());
+        MyArrayList a2 = new MyArrayList();
+        a2.echoHash();
+        a2.echoHash();
+        a2.echoHash();
+
+    }
 
 
     private void println(MyArrayList list){
@@ -72,5 +87,7 @@ public class MyArrayListTest {
             System.out.println("index "+i+" is :"+list.get( i ));
         }
     }
+
+
 }
 

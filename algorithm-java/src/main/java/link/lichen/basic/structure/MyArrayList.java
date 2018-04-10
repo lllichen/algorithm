@@ -107,6 +107,10 @@ public class MyArrayList<T> implements Iterable<T>{
         return new ArrayListIterator();
     }
 
+    public void echoHash(){
+        new ArrayListIterator().echoHash();
+    }
+
     private class ArrayListIterator implements Iterator<T>{
 
         private int current = 0;
@@ -119,6 +123,10 @@ public class MyArrayList<T> implements Iterable<T>{
             if(!hasNext())
                 throw new NoSuchElementException( );
             return theItems[current++];
+        }
+
+        public void echoHash(){
+            System.out.println(MyArrayList.this.hashCode());
         }
 
         public void remove() {
