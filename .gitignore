@@ -22,3 +22,9 @@
 hs_err_pid*
 .idea/
 algorithm-java/algorithm-java.iml
+
+.DS_Store
+algorithm-java/.DS_Store
+algorithm-java/.classpath
+algorithm-java/.project
+algorithm-java/.settings/
