@@ -22,3 +22,5 @@
 hs_err_pid*
 .idea/
 algorithm-java/algorithm-java.iml
+
+common-java/common-java.iml
