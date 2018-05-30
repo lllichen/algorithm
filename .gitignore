@@ -21,14 +21,15 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 .idea/
-algorithm-java/algorithm-java.iml
 
-
-common-java/common-java.iml
 
 .DS_Store
 algorithm-java/.DS_Store
 algorithm-java/.classpath
 algorithm-java/.project
 algorithm-java/.settings/
-
+*.iml
+algorithm-java/target/
+common-java/target/
+curator-java/target/
+curator-java/curator-java.iml
