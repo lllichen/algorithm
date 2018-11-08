@@ -18,7 +18,7 @@ public class LockCompareSynchronize {
 
         long time1 = System.currentTimeMillis();
 
-        final CountDownLatch latch = new CountDownLatch(5);
+        final CountDownLatch latch = new CountDownLatch(4);
         final LockMap lockMap = new LockMap(new HashMap<Integer, Integer>());
         lockMap.put(1,1);
 
@@ -29,6 +29,7 @@ public class LockCompareSynchronize {
                     Integer val = lockMap.get(1);
                     lockMap.put(1,val+1);
                 }
+
                 latch.countDown();
             }
         };
