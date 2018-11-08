@@ -1,7 +1,5 @@
 package ink.lichen.basic.structure;
 
-import link.lichen.basic.structure.MyArrayList;
-import link.lichen.basic.structure.MyLinkedList;
 import org.junit.Test;
 
 import java.util.Iterator;

@@ -1,6 +1,5 @@
 package ink.lichen.basic.structure;
 
-import link.lichen.basic.structure.MyArrayList;
 import org.junit.Test;
 
 /**

@@ -1,4 +1,4 @@
-package link.lichen.basic.structure;
+package ink.lichen.basic.structure;
 
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;

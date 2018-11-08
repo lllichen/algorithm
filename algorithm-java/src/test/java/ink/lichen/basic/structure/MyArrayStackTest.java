@@ -1,6 +1,5 @@
 package ink.lichen.basic.structure;
 
-import link.lichen.basic.structure.MyArrayStack;
 import org.junit.Assert;
 import org.junit.Test;
 
