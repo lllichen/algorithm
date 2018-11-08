@@ -11,7 +11,28 @@ public class QuickSort {
         quicksort(a,lo,hi);
     }
 
-    private static  <T extends Comparable<? super T>> void quicksort(T[] a,int lo,int hi){
+    private static final int CUTOFF = 10;
+
+    private static  <T extends Comparable<? super T>> void quicksort(T[] a,int left,int right){
+        if (left + CUTOFF  <= right){
+            T pivot = median3(a,left,right);
+            int i = left,j = right-1;
+            for (;;){
+                while (a[++i].compareTo(pivot)<0){};
+                while (a[--j].compareTo(pivot)>0){};
+                if (i < j){
+                    swapReference(a,i,j);
+                }else
+                    break;
+            }
+            swapReference(a,i,right-1);
+
+            quicksort(a,left,right-1);
+            quicksort(a,i+1,right);
+        }else {
+            insertionSort(a,left,right);
+
+        }
 
     }
 
@@ -25,5 +46,9 @@ public class QuickSort {
         return a[0];
     }
 
-//    private void swapReference
+    private static final <T>void swapReference (T[] a, int left,int right){
+        T tmp =  a[left];
+        a[left] = a[right];
+        a[right] = tmp;
+    }
 }
