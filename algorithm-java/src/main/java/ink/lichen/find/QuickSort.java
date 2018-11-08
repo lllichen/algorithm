@@ -40,15 +40,32 @@ public class QuickSort {
 
         int center = (left + right) / 2;
         if (a[center].compareTo(a[left]) < 0){
-//            swapReference();
+            swapReference(a,left,center);
         }
-
-        return a[0];
+        if (a[right].compareTo(a[left]) < 0){
+            swapReference(a,left,right);
+        }
+        if (a[right].compareTo(a[center]) < 0){
+            swapReference(a,center,right);
+        }
+        swapReference(a,left,right-1);
+        return a[right-1];
     }
 
     private static final <T>void swapReference (T[] a, int left,int right){
         T tmp =  a[left];
         a[left] = a[right];
         a[right] = tmp;
+    }
+
+    public static <T extends Comparable< ? super T>> void insertionSort(T[] a,int left,int right){
+        int j;
+        for (int p = left;p < right; p++){
+            T tmp = a[p];
+            for ( j=p ; j >0 && tmp.compareTo(a[j-1]) < 0;j--){
+                a[j] = a[j-1];
+            }
+            a[j] = tmp;
+        }
     }
 }
