@@ -16,6 +16,20 @@ public class Sort {
         }
     }
 
+    public static <T extends Comparable<? super T>> void shellSort(T[] t){
+        int j;
+        for(int gap = t.length/2; gap >0; gap /= 2){
+            for (int p = gap;p < t.length; p ++){
+                T tmp = t[p];
+                for (j = p; j > 0 && tmp.compareTo(t[j-1])<0 ; j--){
+                    t[j] = t[j-1];
+                }
+                t[j] = tmp;
+            }
+        }
+    }
+
+
     public static <T> void print(T[] t){
         for(T val : t){
             System.out.println(val);
