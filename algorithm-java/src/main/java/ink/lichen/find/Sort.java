@@ -21,8 +21,8 @@ public class Sort {
         for(int gap = t.length/2; gap >0; gap /= 2){
             for (int p = gap;p < t.length; p ++){
                 T tmp = t[p];
-                for (j = p; j > 0 && tmp.compareTo(t[j-1])<0 ; j--){
-                    t[j] = t[j-1];
+                for (j = p; j > 0 && tmp.compareTo(t[j-gap])<0 ; j-=gap){
+                    t[j] = t[j-gap];
                 }
                 t[j] = tmp;
             }
@@ -39,7 +39,8 @@ public class Sort {
 
     public static void main(String[] args) {
         Integer [] t = new Integer[]{4,3,2,6,5,4,7,8};
-        Sort.insertionSort(t);
+//        Sort.insertionSort(t);
+        Sort.shellSort(t);
         print(t);
     }
 }
