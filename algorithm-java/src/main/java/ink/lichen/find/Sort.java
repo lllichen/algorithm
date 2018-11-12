@@ -16,4 +16,16 @@ public class Sort {
         }
     }
 
+    public static <T> void print(T[] t){
+        for(T val : t){
+            System.out.println(val);
+        }
+    }
+
+
+    public static void main(String[] args) {
+        Integer [] t = new Integer[]{4,3,2,6,5,4,7,8};
+        Sort.insertionSort(t);
+        print(t);
+    }
 }
