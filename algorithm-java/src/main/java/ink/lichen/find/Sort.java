@@ -29,6 +29,44 @@ public class Sort {
         }
     }
 
+    //left child
+    private static int leftChild(int i){
+        return 2*i+1;
+    }
+
+    private static <T extends Comparable<? super T>> void percDown(T[] t,int i, int n){
+        int child;
+        T tmp;
+        for (tmp = t[i];leftChild(i)<n; i= child){
+            child = leftChild(i);
+            if (child != n-1 && t[child].compareTo(t[child+1]) < 0)
+            {
+                child++;
+            }
+            if (tmp.compareTo(t[child]) < 0){
+                t[i] = t[child];
+            }else
+                break;
+        }
+        t[i] = tmp;
+    }
+
+    private static <T extends Comparable<? super T>> void swapReference(T[] t, int lo, int hi){
+        T tmp = t[lo];
+        t[lo] = t[hi];
+        t[hi] = tmp;
+    }
+
+    public static <T extends  Comparable<? super T>> void headSort(T[] t){
+        for (int i = t.length/2-1; i >= 0; i--){
+            percDown(t,i,t.length);
+        }
+        for (int i = t.length-1 ; i>0;i--){
+            swapReference(t,0,i);
+            percDown(t,0,i);
+        }
+    }
+
 
     public static <T> void print(T[] t){
         for(T val : t){
@@ -40,7 +78,8 @@ public class Sort {
     public static void main(String[] args) {
         Integer [] t = new Integer[]{4,3,2,6,5,4,7,8};
 //        Sort.insertionSort(t);
-        Sort.shellSort(t);
+//        Sort.shellSort(t);
+        Sort.headSort(t);
         print(t);
     }
 }
