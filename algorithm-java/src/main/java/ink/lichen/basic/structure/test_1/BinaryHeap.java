@@ -56,18 +56,60 @@ public class BinaryHeap <T extends Comparable< ? super T> >{
     }
 
     private void percolateDown(int hole) {
+        int child;
+        T tmp = array[hole];
+        for (;hole <= currentSize; hole = child ){
+            child = 2* hole;
+            if (child < currentSize&& array[child+1].compareTo(array[child]) < 0 ){
+                child++;
+            }
+            if (tmp.compareTo(array[child]) > 0){
+                array[hole] = array[child];
+            }else
+                break;
+        }
+        array[hole] = tmp;
+    }
 
+    private void decreaseKey(int hole,T val){
+
+    }
+
+    private void increaseKey(int hole,T val){
+
+    }
+
+    private T delete(int hole){
+        T min = (T) new Object();
+        T ret = array[hole];
+        decreaseKey(hole, min );
+        deleteMin();
+        return ret;
     }
 
     private void enlargeArray(int size) {
         if (size <= currentSize){
             return;
         }
-        T[] newItems = (T[]) new Object[size];
+        T[] newItems = (T[]) new Comparable[size];
         for (int i = 1 ; i <= currentSize; i++){
             newItems[i] = array[i];
         }
         array = newItems;
     }
 
+    public static void main(String[] args) {
+        BinaryHeap t = new BinaryHeap();
+        t.insert(2);
+        t.insert(1);
+        t.insert(3);
+        t.insert(4);
+        System.out.println(t.deleteMin());
+//        System.out.println(t.findMin());
+        System.out.println(t.deleteMin());
+//        System.out.println(t.findMin());
+        System.out.println(t.deleteMin());
+        System.out.println(t.deleteMin());
+//        System.out.println(t.findMin());
+    }
 }
