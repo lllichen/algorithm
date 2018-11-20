@@ -103,6 +103,12 @@ public class BinaryHeap<T extends Comparable<? super T>> {
         binaryHeap.insert(4);
         binaryHeap.insert(9);
         binaryHeap.insert(1);
+        binaryHeap.insert(1);
+        binaryHeap.insert(1);
+        binaryHeap.insert(1);
+        binaryHeap.insert(1);
+        System.out.println(binaryHeap.findMin());
+        binaryHeap.deleteMin();
         System.out.println(binaryHeap.findMin());
     }
 }
