@@ -5,15 +5,35 @@ package ink.lichen.basic.structure;
  */
 public class BinaryHeap<T extends Comparable<? super T>> {
 
-    private static final int DEFAULT_CAPACITY = 16;
+    private static final int DEFAULT_CAPACITY = 10;
 
     private int currentSize;
 
     private T [] array;
 
     public BinaryHeap(){
-
+        currentSize = 0;
+        enlargeArray(10);
     }
+
+    public BinaryHeap(T[] items){
+        currentSize = items.length;
+        array = (T[]) new Comparable[(currentSize+2)*11/10];
+
+        int i = 1;
+        for (T item : items)
+        {
+            array[i++] = item;
+        }
+        buildHeap();
+    }
+
+    private void buildHeap() {
+        for (int i = currentSize/2; i >0 ;i--){
+            percolateDown(i);
+        }
+    }
+
 
     public void insert(T t){
         if (currentSize == array.length-1){
@@ -27,9 +47,14 @@ public class BinaryHeap<T extends Comparable<? super T>> {
     }
 
     private void  enlargeArray(int newSize){
-
-
-
+        if (newSize< currentSize){
+            return;
+        }
+        T[] newItems = (T[]) new Comparable[newSize];
+        for (int i = 1 ; i<currentSize;i++){
+            newItems[i] = array[i];
+        }
+        array = newItems;
     }
 
     public  T deleteMin(){
@@ -59,13 +84,25 @@ public class BinaryHeap<T extends Comparable<? super T>> {
     }
 
     private T findMin() {
-
         return array[1];
+    }
+
+    public void makeEmpty(){
+        currentSize = 0;
+        enlargeArray(DEFAULT_CAPACITY);
     }
 
     private boolean isEmpty() {
         return currentSize == 0;
     }
 
-
+    public static void main(String[] args) {
+        BinaryHeap binaryHeap = new BinaryHeap();
+        binaryHeap.insert(5);
+        binaryHeap.insert(3);
+        binaryHeap.insert(4);
+        binaryHeap.insert(9);
+        binaryHeap.insert(1);
+        System.out.println(binaryHeap.findMin());
+    }
 }
