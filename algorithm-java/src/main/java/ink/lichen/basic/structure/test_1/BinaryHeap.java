@@ -49,7 +49,14 @@ public class BinaryHeap <T extends Comparable< ? super T> >{
         if (isEmpty()){
             throw new UnderflowException();
         }
-        for (int i = 0 ; i < )
+        T min = array[1];
+        array[1] = array[currentSize--];
+        percolateDown(1);
+        return min;
+    }
+
+    private void percolateDown(int hole) {
+
     }
 
     private void enlargeArray(int size) {
