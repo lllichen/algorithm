@@ -13,7 +13,20 @@ public class BinaryHeap <T extends Comparable<? super T>>{
 
 
     public BinaryHeap(){
-        makeEmpty();
+        this(DEFAULT_SIZE);
+    }
+
+    public BinaryHeap(int size){
+        currentSize = 0;
+        enlargeArray(size);
+    }
+
+    public BinaryHeap(T[] items){
+        currentSize = (items.length+1)*11/10;
+        for (int hole = currentSize>>1;hole>0;hole--){
+            percolateDown(hole);
+        }
+
     }
 
     //log(n) level insertionSort
@@ -49,9 +62,9 @@ public class BinaryHeap <T extends Comparable<? super T>>{
     private void percolateDown(int hole) {
         int child;
         T tmp = array[hole];
-        for (;hole <= currentSize;hole = child ){
+        for (;hole*2 <= currentSize;hole = child ){
             child = 2*hole;
-            if (hole < currentSize && array[child].compareTo(array[child])<0){
+            if (child != currentSize && array[child+1].compareTo(array[child])<0){
                 child++;
             }
             if (tmp.compareTo(array[child])>0){
