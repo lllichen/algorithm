@@ -57,7 +57,7 @@ public class Sort {
         t[hi] = tmp;
     }
 
-    public static <T extends  Comparable<? super T>> void headSort(T[] t){
+    public static <T extends  Comparable<? super T>> void heapSort(T[] t){
         for (int i = t.length/2-1; i >= 0; i--){
             percDown(t,i,t.length);
         }
@@ -76,10 +76,11 @@ public class Sort {
 
 
     public static void main(String[] args) {
-        Integer [] t = new Integer[]{4,3,2,6,5,4,7,8};
+            Integer a[] = new Integer[] {4,31,6,88,12,4,3,12,77,8,9,15,4,5,6};
+            heapSort(a);
+//            print(a);
 //        Sort.insertionSort(t);
 //        Sort.shellSort(t);
-        Sort.headSort(t);
-        print(t);
+        print(a);
     }
 }
