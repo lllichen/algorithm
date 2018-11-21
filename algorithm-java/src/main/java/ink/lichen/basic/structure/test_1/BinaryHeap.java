@@ -98,6 +98,26 @@ public class BinaryHeap <T extends Comparable< ? super T> >{
         array = newItems;
     }
 
+    public BinaryHeap(T[] items)
+    {
+        currentSize = items.length;
+        array = (T[]) new Comparable[(currentSize+2)*11/10];
+
+        int i = 1;
+        for (T item : items)
+        {
+            array[i++] = item;
+        }
+        buildHeap();
+    }
+
+    private void buildHeap(){
+        for (int i = currentSize/2; i>0;i --)
+        {
+            percolateDown(i);
+        }
+    }
+
     public static void main(String[] args) {
         BinaryHeap t = new BinaryHeap();
         t.insert(2);
