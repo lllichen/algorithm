@@ -22,11 +22,21 @@ public class BinaryHeap <T extends Comparable<? super T>>{
     }
 
     public BinaryHeap(T[] items){
-        currentSize = (items.length+1)*11/10;
-        for (int hole = currentSize>>1;hole>0;hole--){
+        currentSize = items.length;
+        array = (T[]) new Comparable[(currentSize+2)*11/10];
+        int i = 0;
+        for (T val : items){
+            array[++i] = val;
+        }
+        buildHeap();
+
+    }
+
+    private void buildHeap() {
+
+        for ( int hole = currentSize>>2;hole>0 ;hole--){
             percolateDown(hole);
         }
-
     }
 
     //log(n) level insertionSort
@@ -62,7 +72,7 @@ public class BinaryHeap <T extends Comparable<? super T>>{
     private void percolateDown(int hole) {
         int child;
         T tmp = array[hole];
-        for (;hole*2 <= currentSize;hole = child ){
+        for (;hole<<1 <= currentSize;hole = child ) {
             child = 2*hole;
             if (child != currentSize && array[child+1].compareTo(array[child])<0){
                 child++;
