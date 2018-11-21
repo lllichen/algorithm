@@ -89,6 +89,13 @@ public class Sort {
         mergeSort(a,tempArray,0,a.length-1);
     }
 
+    private static  <T extends Comparable<? super T>> void quickSort(T[] a){
+        quickSort(a,0,a.length-1);
+    }
+
+    private static <T extends Comparable<? super T>> void quickSort(T[] a,int left, int right){
+
+    }
 
 
     public static void main(String[] args) {
