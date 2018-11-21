@@ -31,8 +31,8 @@ public class Sort {
 
     private static <T extends Comparable< ? super T>> void percDown(T[] a,int i,int n){
         int child;
-        T tmp = a[i];
-        for (; leftChild(i) < n; i = child){
+        T tmp;
+        for (tmp =a[i]; leftChild(i) < n; i = child){
             child = leftChild(i);
             if (child < n && a[child+1].compareTo(a[child])< 0){
                 child++;
