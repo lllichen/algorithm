@@ -144,9 +144,9 @@ public class Sort {
 
     public static void main(String[] args) {
         Integer a[] = new Integer[] {4,31,6,88,12,4,3,12,77,8,9,15,4,5,6};
-//        heapSort(a);
+        heapSort(a);
 //        mergeSort(a);
-        quickSort(a);
+//        quickSort(a);
 //        insertionSort(a,0,a.length-1);
         print(a);
     }

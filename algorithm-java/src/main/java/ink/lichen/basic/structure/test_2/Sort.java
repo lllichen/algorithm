@@ -34,10 +34,10 @@ public class Sort {
         T tmp;
         for ( tmp =a[i]; leftChild(i) < n; i = child ){
             child = leftChild(i);
-            if ( child != n-1 && a[child+1].compareTo(a[child] ) < 0 ){
+            if ( child != n-1 && a[child+1].compareTo(a[child] ) > 0 ){
                 child++;
             }
-            if ( a[child].compareTo(tmp) < 0){
+            if ( a[child].compareTo(tmp) > 0){
                 a[i] = a[child];
             }else {
                 break;
@@ -46,4 +46,18 @@ public class Sort {
         a[i] = tmp;
     }
 
+
+    private static final void print(Integer [] nums){
+        for (int val : nums){
+            System.out.print(val+"\t");
+        }
+    }
+
+    public static void main(String[] args) {
+
+        Integer a[] = new Integer[] {4,31,6,88,12,4,3,12,77,8,9,15,4,5,6};
+        heapSort(a);
+
+        print(a);
+    }
 }
