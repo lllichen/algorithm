@@ -34,7 +34,7 @@ public class Sort {
         T tmp;
         for (tmp =a[i]; leftChild(i) < n; i = child){
             child = leftChild(i);
-            if (child < n && a[child+1].compareTo(a[child])< 0){
+            if (child != n-1 && a[child+1].compareTo(a[child])< 0){
                 child++;
             }
             if (a[child].compareTo(tmp)< 0){
