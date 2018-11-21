@@ -96,14 +96,14 @@ public class Sort {
     private static final int CUTOFF = 10;
 
     private static <T extends Comparable<? super T>> T median3(T[] a,int left, int right){
-        int center = (left+right) >>1;
-        if (a[left].compareTo(a[center]) < 0){
+        int center = (left+right) / 2;
+        if (a[center].compareTo(a[left]) < 0){
             swapReference(a,left,center);
         }
-        if (a[left].compareTo(a[right]) < 0){
+        if (a[right].compareTo(a[left]) < 0){
             swapReference(a,left,right);
         }
-        if (a[center].compareTo(a[right]) < 0){
+        if (a[right].compareTo(a[center]) < 0){
             swapReference(a,center,right);
         }
         swapReference(a,center,right-1);
@@ -130,23 +130,15 @@ public class Sort {
     }
 
     private static <T extends Comparable<? super T>> void insertionSort(T[] a, int left, int right) {
-//        for (int i = left+1; i<= right ; i-- ){
-//            T tmp = a[i];
-//            int j;
-//            for (j = i; j>left && tmp.compareTo(a[j-1])<0;j--){
-//                a[j] = a[j-1];
-//            }
-//            a[j] = tmp;
-//        }
-
         int j;
-        for (int p = left;p <= right; p++){
-            T tmp = a[p];
-            for ( j=p ; j >0 && tmp.compareTo(a[j-1]) < 0;j--){
+        for (int i = left +1; i<= right ; i++ ){
+            T tmp = a[i];
+            for (j = i; j>left && tmp.compareTo(a[j-1])<0;j--){
                 a[j] = a[j-1];
             }
             a[j] = tmp;
         }
+
     }
 
 
@@ -155,6 +147,7 @@ public class Sort {
 //        heapSort(a);
 //        mergeSort(a);
         quickSort(a);
+//        insertionSort(a,0,a.length-1);
         print(a);
     }
 }
