@@ -93,15 +93,68 @@ public class Sort {
         quickSort(a,0,a.length-1);
     }
 
-    private static <T extends Comparable<? super T>> void quickSort(T[] a,int left, int right){
+    private static final int CUTOFF = 10;
 
+    private static <T extends Comparable<? super T>> T median3(T[] a,int left, int right){
+        int center = (left+right) >>1;
+        if (a[left].compareTo(a[center]) < 0){
+            swapReference(a,left,center);
+        }
+        if (a[left].compareTo(a[right]) < 0){
+            swapReference(a,left,right);
+        }
+        if (a[center].compareTo(a[right]) < 0){
+            swapReference(a,center,right);
+        }
+        swapReference(a,center,right-1);
+        return a[right-1];
+    }
+
+    private static <T extends Comparable<? super T>> void quickSort(T[] a,int left, int right){
+        if (left + CUTOFF <= right){
+            T pivot = median3(a, left, right);
+            int i = left ,j = right -1;
+            for (;;){
+                while (a[++i].compareTo(pivot) < 0){};
+                while (a[--j].compareTo(pivot) > 0){};
+                if (i < j){
+                    swapReference(a,i,j);
+                }else
+                    break;
+            }
+            swapReference(a,i,right-1);
+            quickSort(a,left,i-1);
+            quickSort(a,i+1,right);
+        }else
+            insertionSort(a,left,right);
+    }
+
+    private static <T extends Comparable<? super T>> void insertionSort(T[] a, int left, int right) {
+//        for (int i = left+1; i<= right ; i-- ){
+//            T tmp = a[i];
+//            int j;
+//            for (j = i; j>left && tmp.compareTo(a[j-1])<0;j--){
+//                a[j] = a[j-1];
+//            }
+//            a[j] = tmp;
+//        }
+
+        int j;
+        for (int p = left;p <= right; p++){
+            T tmp = a[p];
+            for ( j=p ; j >0 && tmp.compareTo(a[j-1]) < 0;j--){
+                a[j] = a[j-1];
+            }
+            a[j] = tmp;
+        }
     }
 
 
     public static void main(String[] args) {
         Integer a[] = new Integer[] {4,31,6,88,12,4,3,12,77,8,9,15,4,5,6};
 //        heapSort(a);
-        mergeSort(a);
+//        mergeSort(a);
+        quickSort(a);
         print(a);
     }
 }
