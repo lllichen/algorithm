@@ -46,9 +46,55 @@ public class Sort {
         }
     }
 
+
+
+    private static < T extends Comparable< ? super T> > void mergeSort(T[] a,T[] tempArray,int left, int right){
+        if (left < right){
+            int center = (left+right)/2;
+            mergeSort(a,tempArray,left,center);
+            mergeSort(a,tempArray,center+1,right);
+            merge(a,tempArray,left,center+1,right);
+        }
+    }
+
+    private static<T extends Comparable<? super T>> void merge(T[] a, T[] tempArray, int leftPos, int rightPos, int rightEnd) {
+
+        int leftEnd = rightPos - 1;
+        int tmpPos = leftPos;
+        int numElements = rightEnd - leftPos +1;
+
+        while (leftPos <= leftEnd && rightPos <= rightEnd){
+            if (a[leftPos].compareTo(a[rightPos]) <= 0){
+                tempArray[tmpPos++] = a[leftPos++];
+            }else
+                tempArray[tmpPos++] = a[rightPos++];
+        }
+
+        while (leftPos <= leftEnd){
+            tempArray[tmpPos++] = a[leftPos++];
+        }
+
+        while (rightPos <= rightEnd){
+            tempArray[tmpPos++] = a[rightPos++];
+        }
+
+        for (int i = 0 ;i < numElements; i++,rightEnd--){
+            a[rightEnd] = tempArray[rightEnd];
+        }
+
+    }
+
+    private static  <T extends Comparable<? super T> > void mergeSort(T[] a){
+        T[] tempArray = (T[]) new Comparable[a.length];
+        mergeSort(a,tempArray,0,a.length-1);
+    }
+
+
+
     public static void main(String[] args) {
         Integer a[] = new Integer[] {4,31,6,88,12,4,3,12,77,8,9,15,4,5,6};
-        heapSort(a);
+//        heapSort(a);
+        mergeSort(a);
         print(a);
     }
 }
