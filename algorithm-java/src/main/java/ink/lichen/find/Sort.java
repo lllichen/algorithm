@@ -1,5 +1,7 @@
 package ink.lichen.find;
 
+import static ink.lichen.basic.structure.Support.print;
+
 /**
  * Created by lichen@daojia.com on 2018-11-12.
  */
@@ -64,13 +66,6 @@ public class Sort {
         for (int i = t.length-1 ; i>0;i--){
             swapReference(t,0,i);
             percDown(t,0,i);
-        }
-    }
-
-
-    public static <T> void print(T[] t){
-        for(T val : t){
-            System.out.println(val);
         }
     }
 

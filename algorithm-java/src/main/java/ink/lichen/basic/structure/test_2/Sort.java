@@ -1,5 +1,7 @@
 package ink.lichen.basic.structure.test_2;
 
+import static ink.lichen.basic.structure.Support.print;
+
 /**
  * Created by lichen@daojia.com on 2018-11-21.
  */

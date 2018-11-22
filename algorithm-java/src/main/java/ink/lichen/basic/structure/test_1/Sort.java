@@ -1,5 +1,8 @@
 package ink.lichen.basic.structure.test_1;
 
+
+import static ink.lichen.basic.structure.Support.print;
+
 public class Sort {
 
 
