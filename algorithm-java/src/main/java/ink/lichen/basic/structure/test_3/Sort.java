@@ -25,10 +25,21 @@ public class Sort {
         a[hole] = tmp;
     }
 
+    private static<T extends Comparable<? super T>> void swap(T[] a,int i,int j){
+        T tmp = a[i];
+        a[i] = a[j];
+        a[j] = tmp;
+    }
+
     public static <T extends Comparable<? super T>> void heapSort(T[] a){
-        int i = (a.length+1) >> 1;
-        for (;i >=0;i--){
+
+        for (int i = (a.length+1) >> 1;i >=0;i--){
             percDowm(a,i,a.length-1);
+        }
+        for (int i = a.length-1;i>=0;i-- ){
+
+            a[i] = a[0];
+            percDowm();
         }
     }
 
