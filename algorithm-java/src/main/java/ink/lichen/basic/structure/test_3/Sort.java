@@ -97,7 +97,16 @@ public class Sort {
             int i = left,j= right-1;
             for (;;){
                 if(a[++i].compareTo(pivot) <0){};
+                if (a[--j].compareTo(pivot)>0){};
+                if (i<j){
+                    swap(a,i,j);
+                }else {
+                    break;
+                }
             }
+            swap(a,i,right-1);
+            quickSort(a,left,i-1);
+            quickSort(a,i+1,right);
 
         }else {
             insertionSort(a,left,right);
