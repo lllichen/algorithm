@@ -46,10 +46,28 @@ public class Sort {
 
 
     public static <T extends Comparable< ? super T>> void mergeSort(T[] a){
-
+        T [] temp = (T[]) new Comparable[a.length];
+        mergeSort(a,temp,0,a.length-1);
     }
 
+    private static <T extends Comparable<? super T>> void mergeSort(T[] a, T[] temp, int left, int right) {
+        if (left < right){
+            int center = (left+right)>>1;
+            mergeSort(a,temp,left,center);
+            mergeSort(a,temp,center+1,right);
+            merge(a,temp,left,center,right);
+        }
+    }
 
+    private static<T extends Comparable<? super T>> void merge(T[] a, T[] temp, int leftPos, int leftEnd, int rightEnd) {
+        int rightPos = leftEnd+1;
+        int tempPos = leftPos;
+
+        while (leftPos <= leftEnd && rightPos <= rightEnd)
+        {
+
+        }
+    }
 
 
     public static void main(String[] args) {
