@@ -86,15 +86,37 @@ public class Sort {
     private static final int CUT_OFF = 10;
 
     public static <T extends Comparable<? super T>> void quickSort(T[] a){
-        quickSort(a,0,a.length);
+        quickSort(a,0,a.length-1);
     }
 
+    
+    
     private static<T extends Comparable<? super T>> void quickSort(T[] a, int left, int right) {
         if (left+CUT_OFF <= right){
+            T pivot = median3(a,left,right);
+            int i = left,j= right-1;
+            for (;;){
+                if(a[++i].compareTo(pivot) <0){};
+            }
 
         }else {
             insertionSort(a,left,right);
         }
+    }
+
+    private static <T extends Comparable<? super T>> T median3(T[] a, int left, int right) {
+        int center = (right+left)>>1;
+        if (a[center].compareTo(a[left]) < 0){
+            swap(a,center,left);
+        }
+        if (a[right].compareTo(a[left]) <0){
+            swap(a,right,left);
+        }
+        if (a[right].compareTo(a[center]) <0){
+            swap(a,center,right);
+        }
+        swap(a,center,right-1);
+        return a[right-1];
     }
 
     private static<T extends Comparable<? super T>> void insertionSort(T[] a, int left, int right) {
