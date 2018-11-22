@@ -14,9 +14,9 @@ public class Sort {
     private static <T extends Comparable<? super T>> void percDowm(T[] a,int hole,int right){
         int child;
         T tmp ;
-        for (tmp = a[hole];leftChild(hole)<= right;hole=child){
+        for (tmp = a[hole];leftChild(hole)< right;hole=child){
             child = leftChild(hole);
-            if (child != right && a[child].compareTo(a[child+1])<0){
+            if (child != right-1 && a[child].compareTo(a[child+1])<0){
                 child++;
             }
             if (a[child].compareTo(tmp)>0){
@@ -36,7 +36,7 @@ public class Sort {
     public static <T extends Comparable<? super T>> void heapSort(T[] a){
 
         for (int i = (a.length>>1) -1; i >= 0;i--){
-            percDowm(a,i,a.length-1);
+            percDowm(a,i,a.length);
         }
         for (int i = a.length-1;i>=0;i-- ){
             swap(a,0,i);
