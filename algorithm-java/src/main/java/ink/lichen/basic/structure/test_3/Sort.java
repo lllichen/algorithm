@@ -89,7 +89,16 @@ public class Sort {
         quickSort(a,0,a.length);
     }
 
-    private static<T extends Comparable<? super T>> void quickSort(T[] a, int i, int length) {
+    private static<T extends Comparable<? super T>> void quickSort(T[] a, int left, int right) {
+        if (left+CUT_OFF <= right){
+
+        }else {
+            insertionSort(a,left,right);
+        }
+    }
+
+    private static<T extends Comparable<? super T>> void insertionSort(T[] a, int left, int right) {
+
     }
 
 
