@@ -47,12 +47,6 @@ public class Sort {
     }
 
 
-    private static final void print(Integer [] nums){
-        for (int val : nums){
-            System.out.print(val+"\t");
-        }
-    }
-
     public static <T extends Comparable<? super T>> void mergeSort(T[] a){
         T[] temp = (T[]) new Comparable[a.length];
         mergeSort(a,temp,0,a.length-1);

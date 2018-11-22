@@ -1,5 +1,7 @@
 package ink.lichen.basic.structure.test_3;
 
+import static ink.lichen.basic.structure.Support.print;
+
 /**
  * Created by lichen@daojia.com on 2018-11-22.
  */
@@ -37,13 +39,18 @@ public class Sort {
             percDowm(a,i,a.length-1);
         }
         for (int i = a.length-1;i>=0;i-- ){
-
-            a[i] = a[0];
-            percDowm();
+            swap(a,0,i);
+            percDowm(a,0,i);
         }
     }
 
     public static void main(String[] args) {
-
+        Integer a[] = new Integer[] {4,31,6,88,12,4,3,12,77,8,9,15,4,5,6};
+        //n*log(n)
+//        heapSort(a);
+//        insertionSort(a,0,a.length-1);
+//        mergeSort(a);
+//        quickSort(a);
+        print(a);
     }
 }

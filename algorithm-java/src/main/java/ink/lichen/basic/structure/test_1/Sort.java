@@ -40,14 +40,6 @@ public class Sort {
     }
 
 
-    private static final void print(Integer [] nums){
-        for (int val : nums){
-            System.out.print(val+"\t");
-        }
-    }
-
-
-
     private static < T extends Comparable< ? super T> > void mergeSort(T[] a,T[] tempArray,int left, int right){
         if (left < right){
             int center = (left+right)/2;
