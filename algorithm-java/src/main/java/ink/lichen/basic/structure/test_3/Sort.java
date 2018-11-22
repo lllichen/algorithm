@@ -11,12 +11,12 @@ public class Sort {
         return 2*i+1;
     }
 
-    private static <T extends Comparable<? super T>> void percDowm(T[] a,int hole,int right){
+    private static <T extends Comparable<? super T>> void percDowm(T[] a,int hole,int n){
         int child;
         T tmp ;
-        for (tmp = a[hole];leftChild(hole)< right;hole=child){
+        for (tmp = a[hole];leftChild(hole)< n;hole=child){
             child = leftChild(hole);
-            if (child != right-1 && a[child].compareTo(a[child+1])<0){
+            if (child != n-1 && a[child].compareTo(a[child+1])<0){
                 child++;
             }
             if (a[child].compareTo(tmp)>0){
