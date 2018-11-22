@@ -24,4 +24,11 @@ public class DisjSets {
         }else
             return find(s[x]);
     }
+
+    public static void main(String[] args) {
+        DisjSets disjSets = new DisjSets(10);
+        disjSets.union(1,2);
+        disjSets.union(2,3);
+        System.out.println(disjSets.find(3));
+    }
 }
