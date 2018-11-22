@@ -147,10 +147,10 @@ public class Sort {
 
         Integer a[] = new Integer[] {4,31,6,88,12,4,3,12,77,8,9,15,4,5,6};
         //n*log(n)
-//        heapSort(a);
+        heapSort(a);
 //        insertionSort(a,0,a.length-1);
 //        mergeSort(a);
-        quickSort(a);
+//        quickSort(a);
         print(a);
     }
 }
