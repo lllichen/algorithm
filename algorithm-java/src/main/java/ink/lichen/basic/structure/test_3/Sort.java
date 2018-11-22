@@ -83,8 +83,13 @@ public class Sort {
         }
     }
 
-    public static <T extends Comparable<? super T>> void quickSort(T[] a){
+    private static final int CUT_OFF = 10;
 
+    public static <T extends Comparable<? super T>> void quickSort(T[] a){
+        quickSort(a,0,a.length);
+    }
+
+    private static<T extends Comparable<? super T>> void quickSort(T[] a, int i, int length) {
     }
 
 
