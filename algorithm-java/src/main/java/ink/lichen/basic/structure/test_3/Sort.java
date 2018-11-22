@@ -96,8 +96,8 @@ public class Sort {
             T pivot = median3(a,left,right);
             int i = left,j= right-1;
             for (;;){
-                if(a[++i].compareTo(pivot) <0){};
-                if (a[--j].compareTo(pivot)>0){};
+                while (a[++i].compareTo(pivot) <0){};
+                while (a[--j].compareTo(pivot)>0){};
                 if (i<j){
                     swap(a,i,j);
                 }else {
@@ -129,7 +129,14 @@ public class Sort {
     }
 
     private static<T extends Comparable<? super T>> void insertionSort(T[] a, int left, int right) {
-
+        for (int i = left+1;i <= right; i++){
+            T tmp = a[i];
+            int j;
+            for (j = i;j>left && tmp.compareTo(a[j-1])<0;j--){
+                a[j] = a[j-1];
+            }
+            a[j] = tmp;
+        }
     }
 
 
@@ -138,8 +145,8 @@ public class Sort {
         //n*log(n)
 //        heapSort(a);
 //        insertionSort(a,0,a.length-1);
-        mergeSort(a);
-//        quickSort(a);
+//        mergeSort(a);
+        quickSort(a);
         print(a);
     }
 }
