@@ -37,6 +37,11 @@ public class Sort {
         a[i] = tmp;
     }
 
+
+    public static <T extends Comparable< ? super T>> void mergeSort(T[] a){
+
+    }
+
     public static void main(String[] args) {
         Integer a[] = new Integer[] {4,31,6,88,12,4,3,12,77,8,9,15,4,5,6};
         //n*log(n)
