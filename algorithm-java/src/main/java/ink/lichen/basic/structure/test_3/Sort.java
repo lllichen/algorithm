@@ -1,6 +1,7 @@
 package ink.lichen.basic.structure.test_3;
 
 import static ink.lichen.basic.structure.Support.print;
+import static ink.lichen.basic.structure.Support.swap;
 
 /**
  * Created by lichen@daojia.com on 2018-11-22.
@@ -27,11 +28,7 @@ public class Sort {
         a[hole] = tmp;
     }
 
-    private static<T extends Comparable<? super T>> void swap(T[] a,int i,int j){
-        T tmp = a[i];
-        a[i] = a[j];
-        a[j] = tmp;
-    }
+
 
     public static <T extends Comparable<? super T>> void heapSort(T[] a){
 

@@ -13,4 +13,10 @@ public class Support {
         }
     }
 
+    private static<T extends Comparable<? super T>> void swap(T[] a,int i,int j){
+        T tmp = a[i];
+        a[i] = a[j];
+        a[j] = tmp;
+    }
+
 }
