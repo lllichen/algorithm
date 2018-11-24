@@ -1,6 +1,5 @@
 package ink.lichen.basic.structure.test_4;
 
-import static com.sun.tools.javac.jvm.ByteCodes.swap;
 import static ink.lichen.basic.structure.Support.print;
 import static ink.lichen.basic.structure.Support.swap;
 
