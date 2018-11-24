@@ -58,7 +58,7 @@ public class QuickSort {
         a[right] = tmp;
     }
 
-    public static <T extends Comparable< ? super T>> void insertionSort(T[] a,int left,int right){
+    private static <T extends Comparable< ? super T>> void insertionSort(T[] a,int left,int right){
         int j;
         for (int p = left;p < right; p++){
             T tmp = a[p];

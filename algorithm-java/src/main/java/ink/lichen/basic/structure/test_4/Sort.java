@@ -1,5 +1,6 @@
 package ink.lichen.basic.structure.test_4;
 
+import static ink.lichen.basic.structure.Support.CUT_OFF;
 import static ink.lichen.basic.structure.Support.print;
 import static ink.lichen.basic.structure.Support.swap;
 
@@ -78,7 +79,58 @@ public class Sort {
     }
 
     public static <T extends Comparable<? super T>> void quickSort(T[] a){
+        quickSort(a,0,a.length-1);
+    }
 
+    private static<T extends Comparable<? super T>>  void quickSort(T[] a, int left, int right) {
+        if (left + CUT_OFF <= right){
+            T pivot = median3(a,left,right);
+            int i = left;
+            int j = right - 1;
+            for (;;){
+                while (a[++i].compareTo(pivot)<0){};
+                while (a[--j].compareTo(pivot)>0){};
+                if (i<j){
+                    swap(a,i,j);
+                }else {
+                   break;
+                }
+            }
+            swap(a,i,right-1);
+            quickSort(a,left,i-1);
+            quickSort(a,i+1,right);
+        }else {
+            insertionSort(a,left,right);
+        }
+    }
+
+
+
+
+    private static <T extends Comparable<? super T>> T median3(T[] a, int left, int right) {
+        int center = (right+left)>>1;
+        if (a[center].compareTo(a[left]) < 0){
+            swap(a,left,center);
+        }
+        if (a[right].compareTo(a[left]) <0){
+            swap(a,left,right);
+        }
+        if (a[right].compareTo(a[center]) <0){
+            swap(a,center,right);
+        }
+        swap(a,center,right-1);
+        return a[right-1];
+    }
+
+    private static <T extends Comparable<? super T>> void insertionSort(T[] a, int left, int right) {
+        int j ;
+        for (int i = left+1;i <= right ; i++){
+            T tmp = a[i];
+            for (j = i ; j > left && tmp.compareTo(a[j-1])< 0; j--){
+                a[j] = a[j-1];
+            }
+            a[j] = tmp;
+        }
     }
 
     public static void main(String[] args) {
@@ -86,8 +138,8 @@ public class Sort {
         //n*log(n)
 //        heapSort(a);
 //        insertionSort(a,0,a.length-1);
-        mergeSort(a);
-//        quickSort(a);
+//        mergeSort(a);
+        quickSort(a);
         print(a);
     }
 
