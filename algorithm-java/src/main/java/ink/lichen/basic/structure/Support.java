@@ -19,4 +19,5 @@ public class Support {
         a[j] = tmp;
     }
 
+    public static final int CUT_OFF = 10;
 }
