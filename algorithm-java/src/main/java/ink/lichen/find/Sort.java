@@ -1,5 +1,7 @@
 package ink.lichen.find;
 
+import java.util.ArrayList;
+
 import static ink.lichen.basic.structure.Support.print;
 
 /**
@@ -70,12 +72,40 @@ public class Sort {
     }
 
 
+    public static void radixSortA(String [] arr, int stringLen){
+        final int BUCKETS = 256;
+        ArrayList<String>[] buckets = new ArrayList[BUCKETS];
+
+        for (int i = 0 ; i < BUCKETS; i++)
+            buckets[i] = new ArrayList<>();
+
+        for (int pos = stringLen - 1; pos >=0 ;pos --){
+            for (String s : arr){
+                buckets[s.charAt(pos)].add(s);
+            }
+
+            int idx = 0;
+            for (ArrayList<String> thisBucket : buckets){
+                for (String s : thisBucket){
+                    arr[idx++] = s;
+                }
+                thisBucket.clear();
+            }
+        }
+    }
+
+
     public static void main(String[] args) {
             Integer a[] = new Integer[] {4,31,6,88,12,4,3,12,77,8,9,15,4,5,6};
-            heapSort(a);
+//            heapSort(a);
 //            print(a);
 //        Sort.insertionSort(t);
 //        Sort.shellSort(t);
-        print(a);
+//        print(a);
+
+        String[] strs = new String[]{"aa","cc","ab","ac","ef"};
+
+        radixSortA(strs,2);
+        print(strs);
     }
 }

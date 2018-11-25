@@ -7,8 +7,8 @@ public class Support {
 
 
 
-    public static final void print(Integer [] nums){
-        for (int val : nums){
+    public static  final <T> void print(T [] nums){
+        for (T val : nums){
             System.out.print(val+"\t");
         }
     }
