@@ -109,7 +109,7 @@ public class Sort {
             int[] count = new int[BUCKETS+1];
 
             for (int i = 0; i < N; i++){
-                count[in[i].charAt(i)+1]++;
+                count[in[i].charAt(pos)+1]++;
             }
             for (int b= 1; b <= BUCKETS;b++){
                 count[b] += count[b-1];
@@ -140,7 +140,8 @@ public class Sort {
 
         String[] strs = new String[]{"aa","cc","ab","ac","ef"};
 
-        radixSortA(strs,2);
+//        radixSortA(strs,2);
+        countingRadixSort(strs,2);
         print(strs);
     }
 }
