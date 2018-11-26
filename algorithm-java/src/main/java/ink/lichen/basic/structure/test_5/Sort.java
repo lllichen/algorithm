@@ -91,14 +91,55 @@ public class Sort {
         }
     }
 
+    private static <T extends Comparable<? super T>> void  quickSort(T[] a){
+        quickSort(a,0,a.length-1);
+    }
+
+    private static final int CUT_OFF = 10;
+
+    private static<T extends Comparable<? super T>>  void quickSort(T[] a, int left, int rigth) {
+        if (left + CUT_OFF <= rigth){
+            T pivot = median3(a,left,rigth);
+            int i = left,j = rigth-1;
+            for (;;){
+                while (a[++i].compareTo(pivot) < 0){};
+                while (a[--j].compareTo(pivot) > 0){};
+                if (i < j){
+                    swap(a,i,j);
+                }else
+                    break;
+            }
+            swap(a,i,rigth-1);
+            quickSort(a,left,i-1);
+            quickSort(a,i+1,rigth);
+        }else
+            insertionSort(a,left,rigth);
+
+    }
+
+    private static <T extends Comparable<? super T>> T median3(T[] a, int left, int rigth) {
+        int center = (left + rigth) >> 1;
+        if (a[center].compareTo(a[left])<0){
+            swap(a,left,center);
+        }
+        if (a[rigth].compareTo(a[left])<0){
+            swap(a,rigth,left);
+        }
+        if (a[rigth].compareTo(a[center]) <0){
+            swap(a,rigth,center);
+        }
+        swap(a,center,rigth-1);
+        return a[rigth-1];
+    }
+
 
     public static void main(String[] args) {
         Integer a[] = new Integer[] {4,31,6,88,12,4,3,12,77,8,9,15,4,5,6};
         //n*log(n)
 //        heapSort(a);
 //        insertionSort(a,0,a.length-1);
-        mergeSort(a);
-//        quickSort(a);
+//        mergeSort(a);
+        quickSort(a);
         print(a);
     }
 }
