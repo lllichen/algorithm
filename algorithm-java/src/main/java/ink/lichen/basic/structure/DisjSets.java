@@ -27,8 +27,12 @@ public class DisjSets {
 
     public static void main(String[] args) {
         DisjSets disjSets = new DisjSets(10);
-        disjSets.union(1,2);
-        disjSets.union(2,3);
-        System.out.println(disjSets.find(3));
+        disjSets.union(4,5);
+        disjSets.union(6,7);
+        disjSets.union(4,6);
+        System.out.println(disjSets.find(4));
+        System.out.println(disjSets.find(5));
+        System.out.println(disjSets.find(6));
+        System.out.println(disjSets.find(7));
     }
 }
