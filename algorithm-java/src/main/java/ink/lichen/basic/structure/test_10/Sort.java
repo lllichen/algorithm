@@ -6,10 +6,6 @@ import static ink.lichen.basic.structure.Support.swap;
 
 public class Sort {
 
-
-
-
-
     public static <T extends Comparable<? super T>> void heapSort(T[] a){
         for (int i = (a.length>>1)-1 ; i >=0; i--){
             percDown(a,i,a.length);
@@ -79,7 +75,44 @@ public class Sort {
     }
 
     public static <T extends Comparable<? super T>> void mergeSort(T[] a){
+        T[] tmp = (T[]) new Comparable[a.length];
+        mergeSort(a,tmp,0,a.length-1);
+    }
 
+    private static<T extends Comparable<? super T>> void mergeSort(T[] a,T[] tmp, int left, int right) {
+        if (left < right){
+            int center = (left+right)>>1;
+            mergeSort(a,tmp,left,center);
+            mergeSort(a,tmp,center+1,right);
+            merge(a,tmp,left,center+1,right);
+
+        }
+
+    }
+
+    private static<T extends Comparable<? super T>> void merge(T[] a,T[] tmp, int leftPos, int rightPos, int rightEnd) {
+        int temPos = leftPos;
+        int leftEnd = rightPos-1;
+        int numElement = rightEnd - leftPos + 1;
+        while (leftPos <= leftEnd && rightPos <= rightEnd){
+            if (a[leftPos].compareTo(a[rightPos])<0){
+                tmp[temPos++] = a[leftPos++];
+            }else {
+                tmp[temPos++] = a[rightPos++];
+            }
+        }
+
+        while (leftPos <= leftEnd ){
+            tmp[temPos++] = a[leftPos++];
+        }
+
+        while (rightPos <= rightEnd){
+            tmp[temPos++] = a[rightPos++];
+        }
+
+        for (int i = 0 ; i < numElement; i++,rightEnd--){
+            a[rightEnd] = tmp[rightEnd];
+        }
     }
 
     public static <T extends Comparable<? super T>> void insertionSort(T[] a,int left,int right){
@@ -95,9 +128,9 @@ public class Sort {
     public static void main(String[] args) {
         Integer a[] = new Integer[]{4, 31, 6, 88, 12, 4, 3, 12, 77, 8, 9, 15, 4, 5, 6, 99, 0, 1000};
         //n*log(n)
-        heapSort(a);
+//        heapSort(a);
 //        insertionSort(a,0,a.length-1);
-//        mergeSort(a);
+        mergeSort(a);
 //        quickSort(a);
         print(a);
     }

@@ -2,7 +2,6 @@ package ink.lichen.basic.structure.test_10;
 
 import ink.lichen.basic.structure.UnderflowException;
 
-import static ink.lichen.basic.structure.Support.print;
 
 public class BinaryHeap<T extends Comparable<? super T>> {
 
