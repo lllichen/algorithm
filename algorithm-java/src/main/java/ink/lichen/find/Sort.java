@@ -130,18 +130,25 @@ public class Sort {
     }
 
 
+    public static int fibonacci(int n){
+        if (n <=1){
+            return 1;
+        }
+        int last = 1 ;
+        int nextToLast = 1;
+        int answer = 1;
+        for (int i = 2 ; i < n ; i++){
+            answer = last + nextToLast;
+            nextToLast = last;
+            last = answer;
+        }
+        return answer;
+    }
+
+
+
+
     public static void main(String[] args) {
-            Integer a[] = new Integer[] {4,31,6,88,12,4,3,12,77,8,9,15,4,5,6};
-//            heapSort(a);
-//            print(a);
-//        Sort.insertionSort(t);
-//        Sort.shellSort(t);
-//        print(a);
-
-        String[] strs = new String[]{"aa","cc","ab","ac","ef"};
-
-//        radixSortA(strs,2);
-        countingRadixSort(strs,2);
-        print(strs);
+        System.out.println(fibonacci(10000));
     }
 }
