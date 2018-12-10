@@ -7,8 +7,9 @@ public class PC {
 
     public static void main(String[] args) {
         Shared s = new Shared();
-        new Producer(s).start();
         new Consumer(s).start();
+        new Producer(s).start();
+
     }
 }
 class Producer extends Thread{
@@ -21,8 +22,10 @@ class Producer extends Thread{
     @Override
     public void run() {
         for (char ch = 'A'; ch <= 'Z'; ch++){
-            s.setSharedChar(ch);
-            System.out.println(ch + " produced by producer.");
+            synchronized (s){
+                s.setSharedChar(ch);
+                System.out.println(ch + " produced by producer.");
+            }
         }
     }
 }
@@ -30,15 +33,17 @@ class Producer extends Thread{
 class Consumer extends Thread{
     private Shared s;
 
-    public Consumer(Shared s) {
+    Consumer(Shared s) {
         this.s = s;
     }
 
     public void run() {
         char ch;
         do{
-            ch = s.getSharedChar();
-            System.out.println(ch + " consumed by consumer.");
+            synchronized (s){
+                ch = s.getSharedChar();
+                System.out.println(ch + " consumed by consumer.");
+            }
         }
         while (ch != 'Z');
     }
