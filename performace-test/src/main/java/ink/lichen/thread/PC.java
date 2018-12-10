@@ -10,10 +10,6 @@ public class PC {
         new Producer(s).start();
         new Consumer(s).start();
     }
-
-
-
-
 }
 class Producer extends Thread{
     private final Shared s;
