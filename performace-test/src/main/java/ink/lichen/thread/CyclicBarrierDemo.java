@@ -11,16 +11,16 @@ import java.util.concurrent.Executors;
 public class CyclicBarrierDemo {
 
     private static final int val = 3;
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         CyclicBarrier barrier = new CyclicBarrier(val,()->{
             System.out.println("all is over");
         });
+        System.out.println(barrier.getNumberWaiting());
         ExecutorService executorService = Executors.newFixedThreadPool(val);
         Runnable runnable = ()->{
             try {
                 System.out.println(Thread.currentThread().getName()+" ready!!");
                 barrier.await();
-                Thread.sleep(2000);
                 System.out.println(Thread.currentThread().getName()+" end!!");
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -31,6 +31,8 @@ public class CyclicBarrierDemo {
         executorService.submit(runnable);
         executorService.submit(runnable);
         executorService.submit(runnable);
+        Thread.sleep(2000);
+        System.out.println(barrier.getNumberWaiting());
 
         System.out.println("hahahha");
 
