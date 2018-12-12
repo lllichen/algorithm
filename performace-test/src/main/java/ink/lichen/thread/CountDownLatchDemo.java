@@ -11,7 +11,7 @@ public class CountDownLatchDemo {
 
     private static final int val = 3;
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args){
         CountDownLatch end = new CountDownLatch(3);
         CountDownLatch begin = new CountDownLatch(1);
 
@@ -32,7 +32,11 @@ public class CountDownLatchDemo {
         executorService.submit(runnable);
         begin.countDown();
         System.out.println("hahahha");
-        end.await();
+        try {
+            end.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         executorService.shutdown();
         System.out.println("main end!!!");
     }
