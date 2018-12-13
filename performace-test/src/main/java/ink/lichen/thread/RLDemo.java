@@ -27,6 +27,7 @@ public class RLDemo {
             public void run() {
                 lock.lock();
                 try {
+
                     if (lock.isHeldByCurrentThread()){
                         System.out.printf("Thread %s entered critical section.%n", name);
                         System.out.printf("Thread %s performing work.%n",name);
@@ -37,6 +38,8 @@ public class RLDemo {
                             e.printStackTrace();
                         }
                         System.out.printf("Thread %s finished work.%n",name);
+                    }else {
+                        System.out.printf("Thread %s is wait.%n",name);
                     }
                 }finally {
                     lock.unlock();
