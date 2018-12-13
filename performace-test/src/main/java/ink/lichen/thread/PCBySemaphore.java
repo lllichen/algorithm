@@ -1,5 +1,7 @@
 package ink.lichen.thread;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.concurrent.Semaphore;
 
 /**
@@ -10,7 +12,8 @@ public class PCBySemaphore {
     public static void main(String[] args) {
         Share s = new Share();
         Semaphore semCon = new Semaphore(0);
-        Semaphore semPro = new Semaphore(1);
+        Semaphore semPro = new Semaphore(3);
+        new ProducerB(s,semPro,semCon).start();
         new ProducerB(s,semPro,semCon).start();
         new ConsumerB(s,semPro,semCon).start();
     }
@@ -18,14 +21,13 @@ public class PCBySemaphore {
 
 class Share{
 
-    private char c;
+    private LinkedList<Character> c = new LinkedList<>();
 
     void setSharedChar(char c){
-        this.c = c;
+        this.c.add(c);
     }
 
-    char getSharedChar(){
-        return c;
+    char getSharedChar(){ return c.remove();
     }
 }
 
