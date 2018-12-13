@@ -10,7 +10,9 @@ import java.util.concurrent.locks.ReentrantLock;
 public class PCByLock {
 
     public static void main(String[] args) {
-
+        ShareByLock s = new ShareByLock();
+        new ProducerByLock(s).start();
+        new ConsumerByLock(s).start();
     }
 }
 
@@ -105,6 +107,13 @@ class ConsumerByLock extends Thread{
 
     @Override
     public void run() {
-
+        char ch;
+        do {
+            l.lock();
+            ch = s.getSharedChar();
+            System.out.println(ch + " consumed by consumer. ");
+            l.unlock();
+        }
+        while (ch != 'Z');
     }
 }
