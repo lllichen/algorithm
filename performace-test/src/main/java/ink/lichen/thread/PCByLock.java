@@ -13,6 +13,7 @@ public class PCByLock {
         ShareByLock s = new ShareByLock();
         new ProducerByLock(s).start();
         new ConsumerByLock(s).start();
+        new ConsumerByLock(s).start();
     }
 }
 
@@ -37,14 +38,21 @@ class ShareByLock {
     }
 
     char getSharedChar() {
+        System.out.println(Thread.currentThread().getName()+" is ready consumer. ");
         lock.lock();
+        System.out.println(Thread.currentThread().getName()+" is consumer ok. ");
         try {
             while (!available)
                 try {
+//                    System.out.println("i'm wait");
+//                    System.out.println("available is: "+available);
                     condition.await();
+//                    System.out.println("wait ok");
+//                    System.out.println("available is: "+available);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+            Thread.sleep(100);
             available = false;
             condition.signal();
         } finally {
@@ -64,7 +72,7 @@ class ShareByLock {
                 }
             this.c = c;
             available = true;
-            condition.signal();
+            condition.signalAll();
         } finally {
             lock.unlock();
         }
@@ -84,10 +92,10 @@ class ProducerByLock extends Thread {
     @Override
     public void run() {
         for (char ch = 'A'; ch <= 'Z'; ch++) {
-            l.lock();
+//            l.lock();
             s.setSharedChar(ch);
             System.out.println(ch + " produced by producer.");
-            l.unlock();
+//            l.unlock();
         }
     }
 }
@@ -108,10 +116,10 @@ class ConsumerByLock extends Thread {
     public void run() {
         char ch;
         do {
-            l.lock();
+//            l.lock();
             ch = s.getSharedChar();
-            System.out.println(ch + " consumed by consumer. ");
-            l.unlock();
+            System.out.println(Thread.currentThread().getName()+" is consumer. " + ch + " consumed by consumer. ");
+//            l.unlock();
         }
         while (ch != 'Z');
     }
