@@ -17,6 +17,7 @@ public class PCByLock {
 }
 
 class ShareByLock {
+
     private char c;
 
     private volatile boolean available;
@@ -25,66 +26,64 @@ class ShareByLock {
 
     private final Condition condition;
 
-    public ShareByLock() {
+    ShareByLock() {
         available = false;
-        this.lock = new ReentrantLock();
-        this.condition = lock.newCondition();
+        lock = new ReentrantLock();
+        condition = lock.newCondition();
     }
 
-    Lock getLock(){
+    Lock getLock() {
         return lock;
     }
 
-    char getSharedChar(){
+    char getSharedChar() {
         lock.lock();
         try {
-            while (!available){
+            while (!available)
                 try {
                     condition.await();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                available = false;
-                condition.signal();
-            }
-        }finally {
+            available = false;
+            condition.signal();
+        } finally {
             lock.unlock();
             return c;
         }
     }
 
-    void setSharedChar(char c){
+    void setSharedChar(char c) {
         lock.lock();
         try {
-            while (available) {
+            while (available)
                 try {
                     condition.await();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-            }
             this.c = c;
             available = true;
             condition.signal();
-        }finally {
+        } finally {
             lock.unlock();
         }
     }
 }
 
-class ProducerByLock extends Thread{
+class ProducerByLock extends Thread {
     private final Lock l;
 
     private final ShareByLock s;
 
-    public ProducerByLock( ShareByLock s) {
+    public ProducerByLock(ShareByLock s) {
         this.l = s.getLock();
         this.s = s;
     }
 
     @Override
     public void run() {
-        for (char ch = 'A'; ch <= 'Z'; ch++){
+        for (char ch = 'A'; ch <= 'Z'; ch++) {
             l.lock();
             s.setSharedChar(ch);
             System.out.println(ch + " produced by producer.");
@@ -94,7 +93,7 @@ class ProducerByLock extends Thread{
 }
 
 
-class ConsumerByLock extends Thread{
+class ConsumerByLock extends Thread {
 
     private final Lock l;
 
