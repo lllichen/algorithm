@@ -45,7 +45,8 @@ public class Sort {
     }
 
     private static <T extends Comparable<? super T>> void quickSort(T[] a, int left, int right){
-        if (left + CUT_OFF <= right){
+//        if (left + CUT_OFF <= right){
+        if (left < right){
             T pivot = median3(a,left,right);
             int i = left,j = right-1;
             for (;;){
@@ -59,8 +60,10 @@ public class Sort {
             swap(a,i,right-1);
             quickSort(a,left,i-1);
             quickSort(a,i+1,right);
-        }else
-            insertionSort(a,left,right);
+        }
+
+//        }else
+//            insertionSort(a,left,right);
     }
 
     private static <T extends Comparable<? super T>> T median3(T[] a, int left, int right) {
