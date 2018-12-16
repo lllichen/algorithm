@@ -12,7 +12,7 @@ public class Sort {
     }
 
     private static <T extends Comparable<? super T>> void heapSort(T[] a){
-        for (int i = a.length>>1-1; i >= 0; i--){
+        for (int i = (a.length>>1)-1; i >= 0; i--){
             percDown(a,i,a.length);
         }
 
@@ -136,7 +136,7 @@ public class Sort {
 //        heapSort(a);
 //        insertionSort(a,0,a.length-1);
 //        mergeSort(a);
-//        quickSort(a);
+        quickSort(a);
         print(a);
     }
 
