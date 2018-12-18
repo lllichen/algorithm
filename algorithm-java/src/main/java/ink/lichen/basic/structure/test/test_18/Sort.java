@@ -80,22 +80,27 @@ public class Sort {
         quickSort(a,0,a.length-1);
     }
     private static <T extends Comparable<? super T>> void quickSort(T[] a,int left, int right){
-        if (left+CUT_OFF <= right){
-            T pivot = median3(a,left,right);
-            int i = 0 , j = right-1;
-            for (;;){
-                while (a[++i].compareTo(pivot)<0){}
-                while (a[--j].compareTo(pivot)>0){}
-                if (i < j){
-                    swap(a,i,j);
-                }else
+        if (left < right) {
+            T pivot = median3(a, left, right);
+            int i = 0, j = right - 1;
+            for (; ; ) {
+                while (a[++i].compareTo(pivot) < 0) {
+                }
+                while (j > left && a[--j].compareTo(pivot) > 0) {
+                }
+                if (i < j) {
+                    swap(a, i, j);
+                } else
                     break;
             }
-            swap(a,i,right-1);
-            quickSort(a,left,i-1);
-            quickSort(a,i+1,right);
-        }else
-            insertionSort(a,left,right);
+            if (i < right) {
+                swap(a, i, right - 1);
+            }
+            quickSort(a, left, i - 1);
+            quickSort(a, i + 1, right);
+        }
+//        }else
+//            insertionSort(a,left,right);
     }
 
     private static <T extends Comparable<? super T>> T median3(T[] a, int left, int right) {
