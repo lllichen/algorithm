@@ -1,6 +1,5 @@
-package ink.lichen.basic.structure.test.test_18;
+package ink.lichen.basic.structure.test.test_old.test_18;
 
-import static ink.lichen.basic.structure.Support.CUT_OFF;
 import static ink.lichen.basic.structure.Support.print;
 import static ink.lichen.basic.structure.Support.swap;
 
