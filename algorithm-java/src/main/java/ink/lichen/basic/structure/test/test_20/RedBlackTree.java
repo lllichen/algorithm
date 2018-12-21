@@ -53,6 +53,17 @@ public class RedBlackTree<T extends Comparable<? super T>> {
                 handleReorient(item);
             }
         }
+
+        if (current != nullNode){
+            return;
+        }
+        current = new RedBlackNode<>(item,nullNode,nullNode);
+
+        if (compare(item,parent)<0){
+            parent.left = current;
+        }else
+            parent.right = current;
+        handleReorient( item );
     }
 
     private void handleReorient(T item)
@@ -115,5 +126,11 @@ public class RedBlackTree<T extends Comparable<? super T>> {
         int color;   //Color
     }
 
+
+    public static void main(String[] args) {
+        RedBlackTree redBlackTree = new RedBlackTree();
+        redBlackTree.insert(1);
+        redBlackTree.insert(1);
+    }
 
 }
