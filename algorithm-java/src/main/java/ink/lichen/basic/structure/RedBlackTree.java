@@ -282,6 +282,12 @@ public class RedBlackTree<AnyType extends Comparable<? super AnyType>>
         RedBlackTree redBlackTree = new RedBlackTree();
         redBlackTree.insert(1);
         redBlackTree.insert(1);
+        redBlackTree.insert(3);
+        redBlackTree.insert(0);
+        redBlackTree.insert(4);
+//        System.out.println(redBlackTree.findMax());
+//        System.out.println(redBlackTree.findMin());
+        redBlackTree.printTree();
 
 //        RedBlackTree<Integer> t = new RedBlackTree<>( );
 //        final int NUMS = 400000;
