@@ -123,9 +123,9 @@ public class RedBlackTree<T extends Comparable<? super T>> {
     {
         if( t != nullNode )
         {
-            System.out.println( t.element );
-            printTree( t.left );
 
+            printTree( t.left );
+            System.out.println( t.element );
             printTree( t.right );
 
         }
