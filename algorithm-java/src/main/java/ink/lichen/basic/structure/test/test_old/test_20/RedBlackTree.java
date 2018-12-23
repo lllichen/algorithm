@@ -93,7 +93,7 @@ public class RedBlackTree<T extends Comparable<? super T>> {
     }
 
     private RedBlackNode rotateWithLeftChild(RedBlackNode k2) {
-        RedBlackNode k1 = k2.left;
+        RedBlackNode k1 = k2.left;//p
         k2.left = k1.right;
         k1.right = k2;
         return k1;
@@ -123,7 +123,6 @@ public class RedBlackTree<T extends Comparable<? super T>> {
     {
         if( t != nullNode )
         {
-
             printTree( t.left );
             System.out.println( t.element );
             printTree( t.right );
