@@ -75,7 +75,7 @@ public class RedBlackTree<T extends Comparable<? super T>> {
         if (parent.color == RED){
             grand.color = RED;
             if(compare(item,grand)<0 != (compare(item,parent)<0)){
-                parent = rotate(item,great);
+                parent = rotate(item,grand);
             }
             current = rotate(item,great);
             current.color = BLACK;
@@ -123,9 +123,9 @@ public class RedBlackTree<T extends Comparable<? super T>> {
     {
         if( t != nullNode )
         {
-
-            printTree( t.left );
             System.out.println( t.element );
+            printTree( t.left );
+
             printTree( t.right );
 
         }
