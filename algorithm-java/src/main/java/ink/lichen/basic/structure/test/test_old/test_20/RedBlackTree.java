@@ -169,6 +169,10 @@ public class RedBlackTree<T extends Comparable<? super T>> {
         redBlackTree.insert(55);
 //        System.out.println(redBlackTree.header.right.element);
         redBlackTree.insert(45);
+//        redBlackTree.insert(84);
+        redBlackTree.insert(89);
+        redBlackTree.insert(91);
+        redBlackTree.insert(92);
 //        System.out.println(redBlackTree.header.right.element);
         redBlackTree.printTree();
     }
