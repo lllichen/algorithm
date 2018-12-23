@@ -106,6 +106,31 @@ public class RedBlackTree<T extends Comparable<? super T>> {
         return k2;
     }
 
+    public void printTree( )
+    {
+        if( isEmpty( ) )
+            System.out.println( "Empty tree" );
+        else
+            printTree( header.right );
+    }
+
+    public boolean isEmpty( )
+    {
+        return header.right == nullNode;
+    }
+
+    private void printTree( RedBlackNode<T> t )
+    {
+        if( t != nullNode )
+        {
+
+            printTree( t.left );
+            System.out.println( t.element );
+            printTree( t.right );
+
+        }
+    }
+
 
     private static class RedBlackNode<T>{
 
@@ -129,8 +154,24 @@ public class RedBlackTree<T extends Comparable<? super T>> {
 
     public static void main(String[] args) {
         RedBlackTree redBlackTree = new RedBlackTree();
-        redBlackTree.insert(1);
-        redBlackTree.insert(1);
+        redBlackTree.insert(10);
+        redBlackTree.insert(85);
+        redBlackTree.insert(15);
+        redBlackTree.insert(70);
+        redBlackTree.insert(20);
+        redBlackTree.insert(60);
+        redBlackTree.insert(30);
+        redBlackTree.insert(50);
+        redBlackTree.insert(65);
+        redBlackTree.insert(80);
+        redBlackTree.insert(90);
+        redBlackTree.insert(40);
+        redBlackTree.insert(5);
+        redBlackTree.insert(55);
+//        System.out.println(redBlackTree.header.right.element);
+        redBlackTree.insert(45);
+//        System.out.println(redBlackTree.header.right.element);
+        redBlackTree.printTree();
     }
 
 }
