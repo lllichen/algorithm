@@ -1,5 +1,7 @@
 package ink.lichen.basic.structure.test.test_26;
 
+import com.sun.org.apache.regexp.internal.RE;
+
 /**
  * Created by lichen@daojia.com on 2018-12-26.
  */
@@ -28,6 +30,24 @@ public class RedBlackTree<T extends Comparable<? super T>> {
             return 1;
         }else
             return item.compareTo(t.element);
+    }
+
+    public void insert(T item){
+        current = parent = grand = great = header;
+        nullNode.element = item;
+        while (compare(item,current) != 0){
+            great = grand;grand = parent;parent = current;
+            current = compare(item,current) <0 ? current.left : current.right;
+
+            //check color;
+            if (current.left.color == RED && current.right.color == RED){
+                handleReorient(item);
+            }
+        }
+    }
+
+    private void handleReorient(T item) {
+
     }
 
     private static class RedBlackNode<T> {
