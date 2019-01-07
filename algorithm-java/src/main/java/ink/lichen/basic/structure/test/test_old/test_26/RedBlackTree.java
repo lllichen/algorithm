@@ -1,6 +1,4 @@
-package ink.lichen.basic.structure.test.test_26;
-
-import com.sun.org.apache.regexp.internal.RE;
+package ink.lichen.basic.structure.test.test_old.test_26;
 
 /**
  * Created by lichen@daojia.com on 2018-12-26.

@@ -1,4 +1,4 @@
-package ink.lichen.basic.structure.test.test_26;
+package ink.lichen.basic.structure.test.test_old.test_26;
 
 import static ink.lichen.basic.structure.Support.print;
 import static ink.lichen.basic.structure.Support.swap;
