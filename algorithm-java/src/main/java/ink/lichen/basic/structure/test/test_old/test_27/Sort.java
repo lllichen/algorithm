@@ -1,4 +1,4 @@
-package ink.lichen.basic.structure.test.test_27;
+package ink.lichen.basic.structure.test.test_old.test_27;
 
 import static ink.lichen.basic.structure.Support.CUT_OFF;
 import static ink.lichen.basic.structure.Support.print;
