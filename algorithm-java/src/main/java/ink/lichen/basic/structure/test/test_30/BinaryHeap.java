@@ -26,10 +26,18 @@ public class BinaryHeap <T extends Comparable<? super T>>{
             enlargeArray(array.length*2+1);
         }
         int hole = ++currentSize;
+        for (array[0] = t; t.compareTo(array[hole>>1]) <0; hole >>= 1 ){
+            array[hole] = array[hole>>1];
+        }
+        array[hole] = t;
     }
 
     private void enlargeArray(int size) {
-
+        T[] old = array;
+        array = (T[]) new Comparable[size];
+        for (int i = 0 ; i < old.length; i ++){
+            array[i] = old[i];
+        }
     }
 
 
