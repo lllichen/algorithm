@@ -21,6 +21,9 @@ public class BinaryHeap<T extends Comparable<? super T>> {
         array = (T[]) new Comparable[capacity+1];
     }
 
+    public void insert(T t){
+
+    }
 
 
 }
