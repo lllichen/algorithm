@@ -1,4 +1,4 @@
-package ink.lichen.basic.structure.test.test_29;
+package ink.lichen.basic.structure.test.test_old.test_29;
 
 /**
  * Created by lichen@daojia.com on 2018-12-26.
