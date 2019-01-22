@@ -31,4 +31,20 @@ public class Sort {
             }
         }
     }
+
+    private static<T extends Comparable<? super T>> void quickSort(T[] a){
+
+    }
+
+    private static<T extends Comparable<? super T>> void quickSort(T[] a,int left, int right){
+
+    }
+
+    private static<T extends Comparable<? super T>> void mergeSort(T[] a,int left, int right){
+
+    }
+
+    private static<T extends Comparable<? super T>> void insertionSort(T[] a){
+
+    }
 }
