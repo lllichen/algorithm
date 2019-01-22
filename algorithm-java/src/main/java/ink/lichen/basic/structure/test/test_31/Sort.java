@@ -1,6 +1,7 @@
 package ink.lichen.basic.structure.test.test_31;
 
 import static ink.lichen.basic.structure.Support.CUT_OFF;
+import static ink.lichen.basic.structure.Support.print;
 import static ink.lichen.basic.structure.Support.swap;
 
 /**
@@ -30,7 +31,12 @@ public class Sort {
             if (child != n-1 && a[child+1].compareTo(a[child])>0){
                 child++;
             }
+            if (a[child].compareTo(tmp)>0){
+                a[i] = a[child];
+            }else
+                break;
         }
+        a[i] = tmp;
     }
 
     private static<T extends Comparable<? super T>> void quickSort(T[] a){
@@ -122,5 +128,16 @@ public class Sort {
             }
             a[j] = tmp;
         }
+    }
+
+
+    public static void main(String[] args) {
+        Integer a[] = new Integer[]{4, 31, 6, 88, 12, 4, 3, 12, 77, 8, 9, 15, 4, 5, 6, 99, 0, 1000};
+        //n*log(n)
+        heapSort(a);
+//        insertionSort(a, 0, a.length - 1);
+//        mergeSort(a);
+//        quickSort(a);
+        print(a);
     }
 }
