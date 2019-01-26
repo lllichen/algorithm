@@ -59,7 +59,7 @@ public class Sort {
     private static <T extends Comparable<? super T>> void merge(T[] a,T[] arr, int leftPos, int rightPos,int rightEnd){
         int leftEnd = rightPos -1;
         int temPos = leftPos;
-        int numElement = rightEnd - leftPos +1;
+        int numElement = rightEnd - leftPos + 1;
         while (leftPos <= leftEnd && rightPos <= rightEnd){
             if (a[leftPos].compareTo(a[rightPos])<0){
                 arr[temPos++] = a[leftPos++];
