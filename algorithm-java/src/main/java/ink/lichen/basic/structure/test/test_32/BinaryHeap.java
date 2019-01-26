@@ -1,5 +1,7 @@
 package ink.lichen.basic.structure.test.test_32;
 
+import ink.lichen.basic.structure.UnderflowException;
+
 /**
  * Created by lichen@daojia.com on 2019-1-25.
  */
@@ -33,7 +35,31 @@ public class BinaryHeap<T extends Comparable<? super T>> {
     }
 
 
+    public T findMin(){
+        if (isEmpty()){
+            throw  new UnderflowException();
+        }
+        T min = array[1];
+        return min;
+    }
 
+    public T deleteMin(){
+        if (isEmpty()){
+            throw new UnderflowException();
+        }
+        T min = findMin();
+        array[1] = array[currentSize--];
+        percolateDown(1);
+        return min;
+    }
+
+    private void percolateDown(int hole) {
+        
+    }
+
+    private boolean isEmpty() {
+        return currentSize == 0;
+    }
 
 
     private void enlargeSize(int size) {
