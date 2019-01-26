@@ -32,6 +32,7 @@ public class BinaryHeap<T extends Comparable<? super T>> {
         for (array[0] = t;t.compareTo(array[hole>>1])<0; hole >>= 1){
             array[hole] = array[hole >>1];
         }
+        array[hole] = t;
     }
 
 
@@ -77,8 +78,22 @@ public class BinaryHeap<T extends Comparable<? super T>> {
     private void enlargeSize(int size) {
         T[] old = array;
         array = (T[]) new Comparable[size];
-        for (int i = 0 ; i < size ;i ++){
+        for (int i = 0 ; i < old.length ;i ++){
             array[i] = old[i];
         }
+    }
+
+
+    public static void main( String [ ] args )
+    {
+        int numItems = 10000;
+        BinaryHeap<Integer> h = new BinaryHeap<>( );
+        int i = 37;
+
+        for( i = 37; i != 0; i = ( i + 37 ) % numItems )
+            h.insert( i );
+        for( i = 1; i < numItems; i++ )
+            if( h.deleteMin( ) != i )
+                System.out.println( "Oops! " + i );
     }
 }
