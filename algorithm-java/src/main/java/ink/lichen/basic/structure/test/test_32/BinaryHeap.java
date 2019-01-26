@@ -32,7 +32,15 @@ public class BinaryHeap<T extends Comparable<? super T>> {
         }
     }
 
-    private void enlargeSize(int size) {
 
+
+
+
+    private void enlargeSize(int size) {
+        T[] old = array;
+        array = (T[]) new Comparable[size];
+        for (int i = 0 ; i < size ;i ++){
+            array[i] = old[i];
+        }
     }
 }
