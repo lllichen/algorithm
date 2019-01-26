@@ -139,8 +139,8 @@ public class Sort {
         //n*log(n)
 //        heapSort(a);
 //        insertionSort(a, 0, a.length - 1);
-        mergeSort(a);
-//        quickSort(a);
+//        mergeSort(a);
+        quickSort(a);
         print(a);
     }
 
