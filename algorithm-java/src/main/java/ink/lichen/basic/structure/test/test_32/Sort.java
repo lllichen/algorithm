@@ -26,7 +26,9 @@ public class Sort {
     private static <T extends Comparable<? super T>> void percDown(T[] a, int i, int n) {
         int child;
         T tmp = a[i];
-//        for ( ;;)
+        for ( ;;){
+
+        }
     }
 
 
