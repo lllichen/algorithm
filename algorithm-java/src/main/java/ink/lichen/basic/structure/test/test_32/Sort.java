@@ -61,7 +61,7 @@ public class Sort {
         int temPos = leftPos;
         int numElement = rightEnd - leftPos + 1;
         while (leftPos <= leftEnd && rightPos <= rightEnd){
-            if (a[leftPos].compareTo(a[rightPos])<0){
+            if (a[leftPos].compareTo(a[rightPos]) < 0){
                 arr[temPos++] = a[leftPos++];
             }else {
                 arr[temPos++] = a[rightPos++];
@@ -72,7 +72,7 @@ public class Sort {
             arr[temPos++] = a[leftPos++];
         }
 
-        while (leftPos <= leftEnd && rightPos <= rightEnd){
+        while (rightPos <= rightEnd){
             arr[temPos++] = a[rightPos++];
         }
 
