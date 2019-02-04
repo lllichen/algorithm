@@ -1,4 +1,4 @@
-package ink.lichen.basic.structure.test.test_31;
+package ink.lichen.basic.structure.test.test_old.test_31;
 
 import ink.lichen.basic.structure.UnderflowException;
 
