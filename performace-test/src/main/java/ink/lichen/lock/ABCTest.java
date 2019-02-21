@@ -1,5 +1,7 @@
 package ink.lichen.lock;
 
+import java.util.concurrent.Semaphore;
+
 /**
  * Created by lichen@daojia.com on 2019-2-21.
  */
@@ -19,6 +21,12 @@ public class ABCTest {
 
 }
 class MajusculeABC {
+
+    Semaphore a = new Semaphore(1);
+    Semaphore b = new Semaphore(0);
+    Semaphore c = new Semaphore(0);
+
+
 }
 class Thread_ABC implements Runnable {
 
@@ -33,6 +41,8 @@ class Thread_ABC implements Runnable {
 
     @Override
     public void run() {
-
+//        if (value == a){
+//
+//        }
     }
 }
