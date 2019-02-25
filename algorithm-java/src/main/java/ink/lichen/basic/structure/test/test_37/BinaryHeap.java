@@ -27,6 +27,11 @@ public class BinaryHeap<T extends Comparable<? super T>> {
         if (currentSize == array.length-1){
             enlargeArray(array.length*2+1);
         }
+        int hole = ++currentSize;
+        for (array[0] = t; array[hole>>1].compareTo(t)>0; hole >>= 1){
+            array[hole] = array[hole>>1];
+        }
+        array[hole] = t;
     }
 
     public T findMin(){

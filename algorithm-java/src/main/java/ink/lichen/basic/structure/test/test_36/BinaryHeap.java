@@ -68,7 +68,7 @@ public class BinaryHeap<T extends Comparable<? super T>> {
     private void enlargeArray(int size) {
         T[] old = array;
         array = (T[]) new Comparable[size];
-        for (int i = 0 ; i < array.length; i++){
+        for (int i = 0 ; i < old.length; i++){
             array[i] = old[i];
         }
     }
