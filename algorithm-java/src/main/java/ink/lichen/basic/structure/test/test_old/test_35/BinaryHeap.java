@@ -1,30 +1,33 @@
-package ink.lichen.basic.structure.test.test_36;
+package ink.lichen.basic.structure.test.test_old.test_35;
 
 import ink.lichen.basic.structure.UnderflowException;
 
+/**
+ * Created by lichen@daojia.com on 2019-2-14.
+ */
 public class BinaryHeap<T extends Comparable<? super T>> {
 
-    private static final int DEFAULT_SIZE = 10;
-
     private T[] array;
+
+    private static final int DEFAULT_CAPACITY = 10;
 
     private int currentSize;
 
     public BinaryHeap(){
-        this(DEFAULT_SIZE);
+        this(DEFAULT_CAPACITY);
     }
 
-    public BinaryHeap(int size) {
+    public BinaryHeap(int capacity) {
         currentSize = 0;
-        array = (T[]) new Comparable[size];
+        array = (T[]) new Comparable[capacity];
     }
 
     public void insert(T t){
         if (currentSize == array.length-1){
-            enlargeArray(array.length*2+1);
+            enlargeArray(2*array.length+1);
         }
-        int hole  = ++currentSize;
-        for (array[0] = t; t.compareTo(array[hole>>1]) < 0; hole >>= 1 ){
+        int hole = ++currentSize;
+        for (array[0] = t; array[hole>>1].compareTo(t)>0;hole >>= 1){
             array[hole] = array[hole>>1];
         }
         array[hole] = t;
@@ -34,8 +37,8 @@ public class BinaryHeap<T extends Comparable<? super T>> {
         if (isEmpty()){
             throw new UnderflowException();
         }
-        T min = array[1];
-        return min;
+        T mind = array[1];
+        return mind;
     }
 
     public T deleteMin(){
@@ -50,32 +53,34 @@ public class BinaryHeap<T extends Comparable<? super T>> {
 
     private void percolateDown(int hole) {
         int child;
-        T tmp = array[hole];
-        for (;hole << 1 <= currentSize; hole = child){
-            child = hole <<1;
-            if ( child != currentSize && array[child+1].compareTo(array[child])<0){
+        T t = array[hole];
+        for (; hole << 1 <= currentSize ; hole = child ){
+            child = hole << 1;
+            if (child != currentSize && array[child+1].compareTo(array[child])<0){
                 child++;
             }
-            if (array[child].compareTo(tmp)<0){
+            if (array[child].compareTo(t)<0){
                 array[hole] = array[child];
             }else {
                 break;
             }
         }
-        array[hole] = tmp;
+        array[hole] = t;
+    }
+
+
+    private boolean isEmpty() {
+        return currentSize == 0;
     }
 
     private void enlargeArray(int size) {
         T[] old = array;
         array = (T[]) new Comparable[size];
-        for (int i = 0 ; i < array.length; i++){
+        for (int i = 0 ; i < old.length; i++){
             array[i] = old[i];
         }
     }
 
-    public boolean isEmpty() {
-        return currentSize == 0;
-    }
 
     public static void main( String [ ] args )
     {

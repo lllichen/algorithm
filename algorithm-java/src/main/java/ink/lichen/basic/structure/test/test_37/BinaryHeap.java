@@ -1,19 +1,20 @@
-package ink.lichen.basic.structure.test.test_35;
+package ink.lichen.basic.structure.test.test_37;
 
 import ink.lichen.basic.structure.UnderflowException;
 
 /**
- * Created by lichen@daojia.com on 2019-2-14.
+ * Created by lichen@daojia.com on 2019-2-25.
  */
 public class BinaryHeap<T extends Comparable<? super T>> {
 
-    private T[] array;
-
     private static final int DEFAULT_CAPACITY = 10;
+
+    private T[] array;
 
     private int currentSize;
 
-    public BinaryHeap(){
+
+    BinaryHeap(){
         this(DEFAULT_CAPACITY);
     }
 
@@ -24,21 +25,15 @@ public class BinaryHeap<T extends Comparable<? super T>> {
 
     public void insert(T t){
         if (currentSize == array.length-1){
-            enlargeArray(2*array.length+1);
+            enlargeArray(array.length*2+1);
         }
-        int hole = ++currentSize;
-        for (array[0] = t; array[hole>>1].compareTo(t)>0;hole >>= 1){
-            array[hole] = array[hole>>1];
-        }
-        array[hole] = t;
     }
 
     public T findMin(){
         if (isEmpty()){
             throw new UnderflowException();
         }
-        T mind = array[1];
-        return mind;
+        return array[1];
     }
 
     public T deleteMin(){
@@ -54,8 +49,8 @@ public class BinaryHeap<T extends Comparable<? super T>> {
     private void percolateDown(int hole) {
         int child;
         T t = array[hole];
-        for (; hole << 1 <= currentSize ; hole = child ){
-            child = hole << 1;
+        for (;hole<<1 <= currentSize ; hole = child){
+            child = hole <<1;
             if (child != currentSize && array[child+1].compareTo(array[child])<0){
                 child++;
             }
@@ -68,7 +63,6 @@ public class BinaryHeap<T extends Comparable<? super T>> {
         array[hole] = t;
     }
 
-
     private boolean isEmpty() {
         return currentSize == 0;
     }
@@ -80,7 +74,6 @@ public class BinaryHeap<T extends Comparable<? super T>> {
             array[i] = old[i];
         }
     }
-
 
     public static void main( String [ ] args )
     {
