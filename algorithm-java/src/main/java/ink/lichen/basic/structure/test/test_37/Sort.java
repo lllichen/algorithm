@@ -1,5 +1,10 @@
 package ink.lichen.basic.structure.test.test_37;
 
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
+
 import static ink.lichen.basic.structure.Support.CUT_OFF;
 import static ink.lichen.basic.structure.Support.print;
 import static ink.lichen.basic.structure.Support.swap;
@@ -138,5 +143,12 @@ public class Sort {
 //        mergeSort(a);
         quickSort(a);
         print(a);
+
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
+
+        ArrayBlockingQueue arrayBlockingQueue = new ArrayBlockingQueue(100);
+
+//        ExecutorService executorService1 = new ThreadPoolExecutor();
+
     }
 }
