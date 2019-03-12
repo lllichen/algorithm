@@ -5,8 +5,18 @@ package ink.lichen.basic.structure.test.test_41;
  */
 public class BinaryHeap<T extends Comparable<? super T>> {
 
-        private T[] array;
+    private T[] array;
 
-//        private
+    private static final int DEFAULT_CAPACITY = 10;
 
+    private int currentSize;
+
+    BinaryHeap() {
+        this(DEFAULT_CAPACITY);
+    }
+
+    public BinaryHeap(int capacity) {
+        currentSize = 0;
+        array = (T[]) new Comparable[capacity];
+    }
 }
