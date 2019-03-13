@@ -10,7 +10,9 @@ public class Sort {
     }
 
     private static <T extends Comparable<? super T>> void heapSort(T[] a){
+        for (int i = 0 ; i < a.length; i++){
 
+        }
     }
 
     private static <T extends Comparable<? super T>> void quickSort(T[] a){
