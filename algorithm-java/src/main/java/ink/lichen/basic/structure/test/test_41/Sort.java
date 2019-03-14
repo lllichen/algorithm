@@ -1,5 +1,6 @@
 package ink.lichen.basic.structure.test.test_41;
 
+import static ink.lichen.basic.structure.Support.CUT_OFF;
 import static ink.lichen.basic.structure.Support.swap;
 
 /**
@@ -39,7 +40,21 @@ public class Sort {
     }
 
     private static <T extends Comparable<? super T>> void quickSort(T[] a){
+        quickSort(a,0,a.length-1);
+    }
 
+    private static <T extends Comparable<? super T>> void quickSort(T[] a,int left, int right){
+        if (left + CUT_OFF <= right){
+            T pivot = median3(a,left,right);
+        }
+    }
+
+    private static <T extends Comparable<? super T>> T median3(T[] a, int left, int right) {
+        int center = (left+right)>>1;
+        if (a[center].compareTo(a[left])<0){
+
+        }
+        return null;
     }
 
     private static <T extends Comparable<? super T>> void mergeSort(T[] a){
