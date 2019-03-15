@@ -52,9 +52,16 @@ public class Sort {
     private static <T extends Comparable<? super T>> T median3(T[] a, int left, int right) {
         int center = (left+right)>>1;
         if (a[center].compareTo(a[left])<0){
-
+            swap(a,left,center);
         }
-        return null;
+        if (a[right].compareTo(a[left])<0){
+            swap(a,left,right);
+        }
+        if (a[right].compareTo(a[center])<0){
+            swap(a,center,right);
+        }
+        swap(a,center,right-1);
+        return a[right-1];
     }
 
     private static <T extends Comparable<? super T>> void mergeSort(T[] a){
