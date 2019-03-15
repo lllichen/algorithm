@@ -80,6 +80,15 @@ public class Sort {
     }
 
     private static <T extends Comparable<? super T>> void mergeSort(T[] a){
+        T[] arr = (T[]) new Comparable[a.length];
+        mergeSort(a,arr,0,a.length-1);
+    }
+
+    private static <T extends Comparable<? super T>> void mergeSort(T[] a, T[] arr, int left,int right){
+        if (left < right){
+            int center  =( left + right) >> 1;
+
+        }
 
     }
 
