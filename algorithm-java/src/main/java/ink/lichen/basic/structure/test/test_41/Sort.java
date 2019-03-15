@@ -87,7 +87,10 @@ public class Sort {
         for (int i = left ; i <= right ;i++){
             int j = i;
             T tmp = a[i];
-//            for (a[tmp].compareTo())
+            for (;j > left && tmp.compareTo(a[j-1])>0;j--){
+                a[j] = a[j-1];
+            }
+            a[j] = tmp;
 
         }
     }
