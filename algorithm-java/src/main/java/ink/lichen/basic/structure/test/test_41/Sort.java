@@ -87,7 +87,8 @@ public class Sort {
     private static <T extends Comparable<? super T>> void mergeSort(T[] a, T[] arr, int left,int right){
         if (left < right){
             int center  =( left + right) >> 1;
-
+            mergeSort(a,arr,left,center);
+            mergeSort(a,arr,center+1,right);
         }
 
     }
@@ -100,7 +101,6 @@ public class Sort {
                 a[j] = a[j-1];
             }
             a[j] = tmp;
-
         }
     }
 
